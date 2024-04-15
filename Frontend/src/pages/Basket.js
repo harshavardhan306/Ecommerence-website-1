@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import BasketItems from '../components/BasketItems'
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart } from '../services/cart/cartActions'
-import { emptyCart } from '../services/cart/cartActions'
+import { emptyCart } from ' ../services/cart/cartActions'
 import { Link } from "react-router-dom";
 import Menubar from '../components/Menubar';
 import axios from "axios";
