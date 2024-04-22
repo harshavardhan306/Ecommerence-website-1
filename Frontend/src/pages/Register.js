@@ -86,7 +86,7 @@ const Register = () => {
         } if (stateE.password2 || state.password2 === '') {
             alertMessage = alertMessage + "\nIncorrect password 2"
         } if (state.password1 !== state.password2) {
-            alertMessage = alertMessage + "\nPasswords do not match"
+            alertMessage = alertMessage + "\nPasswords does not  match"
         } if (state.rulesCheck === false) {
             alertMessage = alertMessage + "\nAccept the RULES"
         }

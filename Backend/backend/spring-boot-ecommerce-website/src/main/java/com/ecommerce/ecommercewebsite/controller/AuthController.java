@@ -51,14 +51,16 @@ public class AuthController {
         }
 
         try {
-            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
             String jwt = jwtUtils.generateJwtToken(authentication);
 
             UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
-            return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), Collections.singletonList(userDetails.getAuthorities().toString())));
+            return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(),
+                    Collections.singletonList(userDetails.getAuthorities().toString())));
         } catch (AuthenticationException authenticationException) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: Bad credentials!"));
         }
@@ -75,12 +77,14 @@ public class AuthController {
         }
 
         // Create new user's account
-        User user = new User(signupRequest.getEmail(), encoder.encode(signupRequest.getPassword()), signupRequest.getFirst_name(),
+        User user = new User(signupRequest.getEmail(), encoder.encode(signupRequest.getPassword()),
+                signupRequest.getFirst_name(),
                 signupRequest.getLast_name(), signupRequest.getPhone_number());
 
         user.setUser_role_id(1);
         userRepository.save(user);
 
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        return ResponseEntity
+                .ok(new MessageResponse("User registered  very successfully! have a nice day please visit again"));
     }
 }
